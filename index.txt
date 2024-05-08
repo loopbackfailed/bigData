@@ -1,0 +1,45 @@
+raw link
+https://raw.githubusercontent.com/loopbackfailed/bigData/main/B_1/Group_B_1_Facebook.ipynb
+
+directory tree
+.
+├── adult_dataset.csv
+├── airquality_data.csv
+├── B_1
+│   ├── adult_dataset.csv
+│   ├── dataset_Facebook.csv
+│   ├── Group_B_1_Adult.ipynb
+│   └── Group_B_1_Facebook.ipynb
+├── B_1.txt
+├── B_2
+│   ├── airquality_data.csv
+│   ├── b_2_air.ipynb
+│   ├── b_2_Heart.ipynb
+│   └── heart.csv
+├── B_2_1.txt
+├── B_2_2.txt
+├── B_3
+│   ├── DSBDA B3.ipynb
+│   ├── forestfires.csv
+│   └── forestfires.xls
+├── B_4
+│   ├── AirQuality_visualization.csv
+│   ├── b_4_air.ipynb
+│   ├── B_4_Heart.ipynb
+│   ├── B_4_Tips.ipynb
+│   ├── heart.csv
+│   └── tips_DV.csv
+├── B_5
+│   ├── adult_dataset.csv
+│   ├── Adult_NW1.csv
+│   ├── adult.twb
+│   ├── Iris.csv
+│   └── iris_visualization.twb
+├── dataset_Facebook.csv
+├── heart.csv
+├── index.txt
+├── Iris.csv
+├── tableau.pdf
+└── webbs.txt
+
+5 directories, 33 files
