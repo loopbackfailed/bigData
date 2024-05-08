@@ -1,0 +1,61 @@
+import requests
+import pandas as pd
+from bs4 import BeautifulSoup
+from datetime import datetime
+
+reviews_url = 'https://www.amazon.com/Razer-BlackShark-V2-Gaming-Headset/dp/B09PZG4R17/'
+len_page = 4
+
+def reviewsHtml(url, len_page):
+    soups = []
+    for page_no in range(1, len_page + 1):
+        params = {
+            'ie': 'UTF8',
+            'reviewerType': 'all_reviews',
+            'filterByStar': 'critical',
+            'pageNumber': page_no,
+        }
+        response = requests.get(url, params=params)
+        soup = BeautifulSoup(response.text, 'lxml')
+        soups.append(soup)
+    return soups
+
+def getReviews(html_data):
+    data_dicts = []
+    for box in html_data.select('div[data-hook="review"]'):
+        try:
+            name = box.select_one('[class="a-profile-name"]').text.strip()
+        except:
+            name = 'N/A'
+
+        try:
+            stars = box.select_one('[data-hook="review-star-rating"]').text.strip().split(' out')[0]
+        except:
+            stars = 'N/A'
+
+        try:
+            title = box.select_one('[data-hook="review-title"]').text.strip()
+        except:
+            title = 'N/A'
+
+        try:
+            description = box.select_one('[data-hook="review-body"]').text.strip()
+        except:
+            description = 'N/A'
+
+        data_dict = {
+            'Name' : name,
+            'Stars' : stars,
+            'Title' : title,
+            'Description' : description
+        }
+        data_dicts.append(data_dict)
+    return data_dicts
+
+html_datas = reviewsHtml(reviews_url, len_page)
+reviews = []
+for html_data in html_datas:
+    reviews += getReviews(html_data)
+
+df_reviews = pd.DataFrame(reviews)
+print(df_reviews)

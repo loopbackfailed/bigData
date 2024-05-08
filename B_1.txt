@@ -1,0 +1,29 @@
+import pandas as pd
+df = pd.read_csv('dataset_Facebook.csv',delimiter=';')
+df
+df.describe()
+df.info()
+
+# First subset: Like and Share
+df_subset_1 = df[['like','share']]
+df_subset_1
+
+# second subset: Comment and Type
+df_subset_2 = df[['comment','Type']]
+df_subset_2
+
+merged_data  = pd.merge(df_subset_2, df_subset_1, left_on='comment', right_on= 'like')
+merged_data
+
+sort_values=df.sort_values(by=['like'],ascending=False)
+sort_values
+
+df.transpose()
+
+df.shape
+
+df.Type.unique()
+
+# Reshape
+pivot_table=pd.pivot_table(df,index=['Type','Category'],values='comment')
+pivot_table
